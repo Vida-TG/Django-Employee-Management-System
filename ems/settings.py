@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import django_heroku
 from django.urls import reverse_lazy
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -24,10 +25,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '*&*y6o*2*f049v6m_nst9444z+$6!y3d6zf0q9!%v%z*dm14+('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
-    'https://ivictor-ems.herokuapp.com',
+    'https://victor-ems.herokuapp.com',
     '127.0.0.1'
 ]
 
@@ -138,3 +139,8 @@ STATICFILES_DIRS = [
 	os.path.join(BASE_DIR, 'ems', 'static')
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'ems', 'assets')
+
+
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
