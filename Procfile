@@ -1,1 +1,1 @@
-web: gunicorn EMS.wsgi
+web: gunicorn EMS.wsgi:application
