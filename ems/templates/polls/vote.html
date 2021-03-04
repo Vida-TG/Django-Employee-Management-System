@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+	Poll | Vote
+{% endblock title %}
+
+{% block content %}
+	<h3 style="font-style: italic">Vote</h3>
+		<p style='font-weight:bold;'>{{question.title}}</p>
+		<p>This question was created by {{question.created_by.username}}</p><hr/>
+			<form action="{% url 'vote' id=question.id %}" method="POST">
+				{% csrf_token %}
+		{% for choice in question.choices %}
+		<p>
+				<label for="choice{{choice.id}}">{{ choice.text }}</label>
+				<input id="choice{{choice.id}}" type="radio" name="vote" value={{choice.id}} {% if initial_vote %}{% if initial_vote.choice == choice %} checked {% endif %}{% endif %}>
+		</p>
+		{% empty %}
+			<p>No option available</p>
+		{% endfor %}
+		
+		{% if question.choices %}
+		<div class="flexy-end">
+		<input type="submit" value="Vote">
+		</div>
+		{% endif %}
+		</form>
+{% endblock content %}

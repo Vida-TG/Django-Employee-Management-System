@@ -1,0 +1,115 @@
+@media(max-width:450px){
+	.list-tab-change {
+		display: block !important;
+	}
+}
+
+body {
+	font-family: cursive;
+	background: #ddd;
+}
+footer {
+	text-align: center;
+	padding-top: 40px;
+}
+header > h1 {
+	text-align: center;
+	font-family: monospace;
+}
+a {
+	text-decoration: none;
+	color: blue;
+}
+a:hover {
+	color: cornflowerblue;
+	padding-bottom: 1px;
+	border-bottom: 2px solid cornflowerblue;
+}
+.question-link:hover {
+	border-bottom: none;
+	padding: 0px;
+}
+.asteriskField, #hint_id_username, .help-block {
+	display: none !important;
+}
+.details-table {
+	border: none;
+	width: 100% !important;
+	border-spacing: 5px 15px;
+}
+.lil-left-padding {
+	padding-left: 10px;
+}
+input[type="submit"] {						background: #ccc;
+	padding: 5px 15px;
+}
+.flexy {
+	display: flex;
+	justify-content: space-between;
+}
+.flexy-end {
+	display: flex;
+	justify-content: flex-end;
+}
+.list-tab {
+	margin: 2px 0px;
+	display: flex;
+	justify-content: space-between;
+	padding: 10px 5px;
+	background: #ccc;
+}
+.textInput, .numberinput, select[name="role"], #id_email{
+	margin: 5px 0px 15px 0px;
+	background: #ddd;
+	padding: 5px;
+}
+.textInput, .numberinput, #id_email{
+	width: 80% !important;
+}
+.delete-card {
+	margin: 30px auto;
+	width: 60%;
+	padding: 100px 5px;
+	background: #ccc;
+	border: 2px solid black;
+	border-radius: 15px;
+}
+ul {
+	padding: 0px;
+	list-style-type: none;
+}
+.badge{
+	font-size: 12px;
+	color: #fff;
+	margin: 0px;
+	background: blue;
+	padding: 2px 6px;
+	height: 8px !important;
+	width: 8px !important;
+	border-radius: 14px;
+}
+.search-form {
+	width: 230px;
+	padding: 0px;
+	margin: 0px 10px;
+}
+.search-input {
+	display: block;
+	width: 100%;
+	height: 12px;
+	padding: 5px;
+	font-size: 15px;
+	background: #ddd;
+	border: none;
+	margin: 25px auto 3px auto;
+	border-bottom: 2px solid blue;
+}
+.search-submit {
+	display: block;
+	background: #ddd;
+	border: 2px solid blue;
+	width: 30%;
+	margin: 0px;
+	padding: 2px;
+	height: 25px;
+}

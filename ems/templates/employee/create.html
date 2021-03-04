@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+	<br><h3 style="text-align:center;">Add new employee</h3>
+	<form method="POST">
+		{% csrf_token %}
+		{{ form|crispy}}
+		<input type="submit" value="Add employee" style="margin: 10px; padding: 7px 20px; background: #bbb;">
+	</form>
+{% endblock %}

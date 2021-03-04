@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+	E.M.S | Delete poll
+{% endblock title %}
+
+{% block content %}
+	<div class="delete-card">
+		<br><h4 style="text-align:center;">Are you sure?</h4>
+	<div style="display:flex;justify-content:space-around;">
+	<form method="POST">
+		{% csrf_token %}
+			<input type="submit" value="Yes">
+			<a style="padding-left:10px;" href="{% url 'employee_list' %}">Cancel</a>
+	</form>
+	</div>
+	</div>
+{% endblock content %}

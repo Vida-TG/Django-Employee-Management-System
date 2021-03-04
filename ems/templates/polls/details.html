@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+	Poll | Details
+{% endblock title %}
+
+{% block content %}
+	<h3 style="font-style: italic">Question Details</h3>
+		
+	<div>
+		<p style='font-weight:bold; font-size:18px;'>{{question.title}}</p>
+		{% if question.status == "active" %}
+		<span><a href="{% url 'vote' id=question.id %}" style="margin-right:5px;">Vote</a></span>
+		{% else %}
+			<span style="margin-right: 12px;">This poll is closed</span>
+		{% endif %}
+		{% if user.role == "Admin" or user.role == "HR" %}
+		<span><a href="{% url 'delete_poll' pk=question.id %}">Delete</a></span>
+		{% endif %}
+	</div><br>
+		
+		<p>This question was created by {{question.created_by.username}}</p><hr/>
+		{% for choice in question.choices %}
+			<p>- {{ choice.text }} ({{ choice.votes }}) </p>
+		{% empty %}
+			<p>No option available</p>
+		{% endfor %}
+{% endblock content %}

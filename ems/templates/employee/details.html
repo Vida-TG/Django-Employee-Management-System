@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+	E.M.S | Details
+{% endblock title %}
+
+{% block content %}
+	{% if user == employee %}
+		<h3 style="text-align:center">My profile</h3>
+	{% else %}
+		<h3 style="text-align:center">{{employee.profile}}</h3>
+	{% endif %}
+	<table class="details-table">
+		<tr class='list-tab'>
+			<td>First Name:</td>
+			<td>{{employee.first_name}}</td>
+		</tr>
+		<tr class='list-tab'>
+			<td>Last Name:</td>
+			<td>{{employee.last_name}}</td>
+		</tr>
+		<tr class='list-tab'>
+			<td>E-mail:</td>
+			<td>{{employee.email}}</td>
+		</tr>
+		<tr class='list-tab'>
+			<td>Designation:</td>
+			<td>{{employee.profile.designation}}</td>
+		</tr>
+		<tr class='list-tab'>
+			<td>Salary:</td>
+			<td>N{{employee.profile.salary}}</td>
+		</tr>
+	</table>
+	
+	{% if user == employee or user.role == "Admin" %}
+		<a href="{% url 'employee_edit' pk=employee.id %}">Edit</a>
+	{% endif %}
+	
+	{% if user.role == "Admin" and user != employee %}
+		<a href="{% url 'employee_delete' pk=employee.id %}">Delete</a>
+	{% endif %}
+	
+	{% if user == employee %}
+	<a href="{% url 'password_change' %}">Change password</a>
+	{% endif %}
+		
+{% endblock content %}

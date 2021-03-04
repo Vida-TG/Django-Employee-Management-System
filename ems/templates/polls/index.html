@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load filterlib %}
+
+{% block title %}
+	E.M.S | Home
+{% endblock title %}
+
+{% block content %}
+
+	{% if questions %}
+		<h3>These are all active polls:</h3>
+			{% for question in questions %}
+				<p class="list-tab list-tab-change">
+					<a href="{{question.id}}/details/" class="question-link">{{question}}</a>
+					{% if user.role == "Admin" or user.role == "HR" %}
+					<span>
+						<a class="question-link lil-left-padding" href="{% url 'delete_poll' pk=question.id %}">Delete</a>
+					</span>
+				{% endif %}
+				</p>
+			{% endfor %}
+	{% else %}
+		<h3>There is no question available.</h3>
+	{% endif %}
+	
+	
+	
+	
+	{% if recent %}
+		<h3>Recent polls</h3>
+			{% for question in recent %}
+				<p class="list-tab list-tab-change">
+					<a href="{{question.id}}/details/" class="question-link">{{question}}</a>
+					{% if user.role == "Admin" or user.role == "HR" %}
+					<span>
+						<a class="question-link lil-left-padding" href="{% url 'delete_poll' pk=question.id %}">Delete</a>
+					</span>
+				{% endif %}
+				</p>
+			{% endfor %}
+	{% endif %}
+	{% endblock content %}

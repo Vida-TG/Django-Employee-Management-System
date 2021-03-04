@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+			{% block title %}
+			{% endblock title %}
+		</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link rel="stylesheet" href="{% static 'styles/custom.css' %}">
+	</head>
+	<body>
+		<header>
+			<h1>EMS</h1>
+		</header>
+		{% if user.is_authenticated %}
+		<nav class="flexy">
+		<span>
+			<a href="{% url 'home' %}" style="margin:0px 15px 0px 0px;">Polls <span class="badge">{{ active_q }}</span></a>
+			<a href="{% url 'employee_list' %}">Employees</a>
+			</span>
+			<span>
+				<a href="{% url 'employee_details' id=user.id %}">{{user.username}}</a>
+				<a href="{% url 'logout' %}">Log out</a>
+			</span>
+		</nav>
+		{% endif %}
+		<main>
+			{% block content %}
+			{% endblock content %}
+		</main>
+		<footer>
+			<div>
+				copyright&copy2019
+			</div>
+		</footer>
+	</body>
+</html>

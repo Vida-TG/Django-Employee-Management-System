@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	E.M.S | Employees
+{% endblock title %}
+
+{% block content %}
+	{% if user.role == "Admin" or user.role == "HR" %}
+		<h4 class="flexy-end">
+		<a href="
+{% url 'employee_add' %}">Add employee</a>
+		</h4>
+	{% endif %}
+	
+	{% for employee in employees %}
+		<p class="flexy">
+			<a href="{% url 'employee_details' id=employee.id %}"> {{employee.profile}}</a> 
+			<span>
+			{% if user.role == "Admin" %}
+				<a href="{% url 'employee_edit' pk=employee.id %}">Edit</a>
+				{% if user != employee %}
+				<a href="{% url 'employee_delete' pk=employee.id %}">Delete</a>
+				{% endif %}
+			{% endif %}
+			</span>
+		</p>
+	{% endfor %}
+	{% endblock content %}
