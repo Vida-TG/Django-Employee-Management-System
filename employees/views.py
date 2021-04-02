@@ -17,10 +17,11 @@ admin_decorators = [login_required, role_required(["Admin"])]
 
 # Create your views here.
 
+#login is always required to access anything about employees
 @login_required
 def employee_list(request):
-	employees = User.objects.all()
-	context = { 'employees' : employees }
+	all_employees = User.objects.all()
+	context = { 'employees' : all_employees }
 	return render(request, 'employee/list.html', context)
 
 
